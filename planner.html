@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Planner</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Nav Bar -->
+  <nav class="flex justify-between items-center px-6 py-4 bg-gray-900 text-white">
+    <h1 class="text-xl font-bold text-orange-500">LifeOS</h1>
+
+    <ul class="flex gap-6 text-sm">
+      <li><a href="index.html" class="hover:text-orange-500">Dashboard</a></li>
+      <li><a href="expenses.html" class="hover:text-orange-500">Expenses</a></li>
+      <li><a href="planner.html" class="hover:text-orange-500 text-orange-500">Study</a></li>
+      <li><a href="habits.html" class="hover:text-orange-500">Habits</a></li>
+      <li><a href="goals.html" class="hover:text-orange-500">Goals</a></li>
+    </ul>
+  </nav>
+
+  <!-- Content -->
+  <main class="p-6">
+
+    <!-- Header -->
+    <div class="mb-6">
+      <h2 class="text-2xl font-bold">Study Planner</h2>
+      <p class="text-gray-600">Plan your tasks and stay consistent</p>
+    </div>
+
+    <!-- Input -->
+    <div class="bg-white p-4 rounded-xl shadow mb-6 grid md:grid-cols-3 gap-3">
+      <input type="text" placeholder="Task name" class="border p-2 rounded">
+      <input type="date" class="border p-2 rounded">
+
+      <button class="bg-orange-500 text-white rounded p-2 hover:bg-orange-600">Add Task</button>
+
+    </div>
+
+    <!-- Summary Cards -->
+    <div class="grid md:grid-cols-3 gap-4 mb-6">
+
+      <div class="bg-white p-4 rounded-xl shadow">
+        <p class="text-gray-500">Total Tasks</p>
+        <h3 class="text-2xl font-bold" id="totalTasks">0</h3>
+      </div>
+
+      <div class="bg-white p-4 rounded-xl shadow">
+        <p class="text-gray-500">Completed</p>
+        <h3 class="text-2xl font-bold" id="completedTasks">0</h3>
+      </div>
+
+      <div class="bg-white p-4 rounded-xl shadow">
+        <p class="text-gray-500">Pending</p>
+        <h3 class="text-2xl font-bold" id="pendingTasks">0</h3>
+      </div>
+
+    </div>
+
+    <!-- Task List -->
+    <div class="bg-white p-4 rounded-xl shadow">
+      <h3 class="font-semibold mb-3">Tasks</h3>
+
+      <div id="taskList" class="space-y-3">
+        <p class="text-gray-400 text-sm">No tasks yet...</p>
+      </div>
+
+    </div>
+
+  </main>
+
+</body>
+</html>
