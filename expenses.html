@@ -33,10 +33,10 @@
 
     <!-- Inut card -->
     <div class="bg-white p-4 rounded-xl shadow mb-6 grid md:grid-cols-4 gap-3">
-      <input type="text" placeholder="Expense name" class="border p-2 rounded">
-      <input type="number" placeholder="Amount" class="border p-2 rounded">
+    <input id="expenseName" type="text" placeholder="Expense name" class="border p-2 rounded">
+    <input id="expenseAmount" type="number" placeholder="Amount" class="border p-2 rounded">
 
-      <select class="border p-2 rounded">
+      <select id="expenseCategory" class="border p-2 rounded">
         <option>Food</option>
         <option>Transport</option>
         <option>School</option>
@@ -53,17 +53,17 @@
 
       <div class="bg-white p-4 rounded-xl shadow">
         <p class="text-gray-500">Total Spent</p>
-        <h3 class="text-2xl font-bold text-orange-500">0</h3>
+        <h3 id="totalSpent" class="text-2xl font-bold text-orange-500">0</h3>
       </div>
 
       <div class="bg-white p-4 rounded-xl shadow">
         <p class="text-gray-500">Highest Category</p>
-        <h3 class="text-xl font-semibold">-</h3>
+        <h3 id="highestCategory" class="text-xl font-semibold">-</h3>
       </div>
 
       <div class="bg-white p-4 rounded-xl shadow">
         <p class="text-gray-500">Transactions</p>
-        <h3 class="text-2xl font-bold">0</h3>
+        <h3 id="transactionCount" class="text-2xl font-bold">0</h3>
       </div>
 
     </div>
@@ -79,6 +79,6 @@
 </div>
 
   </main>
-
+  <script src="expense.js"></script>
 </body>
 </html>
