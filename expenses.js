@@ -4,7 +4,11 @@ const expenseAmount = document.getElementById("expenseAmount");
 const expenseCategory = document.getElementById("expenseCategory");
 const addExpenseBtn = document.getElementById("addExpenseBtn");
 
-let expenses = [];
+function saveToStorage() {
+  localStorage.setItem("expenses", JSON.stringify(expenses));
+}
+
+let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
 function renderExpenses() {
   expenseList.innerHTML = "";
@@ -60,6 +64,7 @@ addExpenseBtn.addEventListener("click", function () {
   expenseName.value = "";
   expenseAmount.value = "";
 
+  saveToStorage();
   renderExpenses();
   updateTotal();
   updateHighestCategory();
@@ -67,6 +72,7 @@ addExpenseBtn.addEventListener("click", function () {
 
 function deleteExpense(id) {
   expenses = expenses.filter(exp => exp.id !== id);
+  saveToStorage();
   renderExpenses();
   updateTotal();
   updateHighestCategory();
@@ -106,3 +112,7 @@ function updateHighestCategory() {
 
   document.getElementById("highestCategory").textContent = highest;
 }
+
+renderExpenses();
+updateTotal();
+updateHighestCategory();
