@@ -33,8 +33,7 @@ LifeOS is a multi-page personal productivity web application. It helps users man
 
 - HTML5
 - Tailwind CSS
-- JavaScript (Vanilla)
-- localStorage API
+- JavaScript
 
 ---
 
