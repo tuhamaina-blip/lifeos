@@ -5,17 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LifeOS Dashboard</title>
 
-   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-gray-100 text-gray-800 overflow-x-hidden">
 
   <!-- Navbar -->
-  <nav class="flex justify-between items-center px-6 py-4 bg-gray-900 text-white">
+  <nav class="flex flex-col md:flex-row justify-between items-center px-4 md:px-6 py-4 bg-gray-900 text-white gap-3">
+
     <h1 class="text-xl font-bold text-orange-500">LifeOS</h1>
 
-    <ul class="flex gap-6 text-sm">
-      <li> <a href="index.html" class="hover:text-orange-500">Dashboard</a></li>
+    <ul class="flex flex-wrap justify-center md:justify-end gap-4 md:gap-6 text-sm">
+      <li><a href="index.html" class="hover:text-orange-500">Dashboard</a></li>
       <li><a href="expenses.html" class="hover:text-orange-500">Expenses</a></li>
       <li><a href="planner.html" class="hover:text-orange-500">Study</a></li>
       <li><a href="habits.html" class="hover:text-orange-500">Habits</a></li>
@@ -25,7 +26,7 @@
   </nav>
 
   <!-- Main dashboard -->
-  <main class="p-6">
+  <main class="p-4 md:p-6">
 
     <!-- Header -->
     <div class="mb-6">
@@ -34,7 +35,7 @@
     </div>
 
     <!-- Stats Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
       <!-- Expenses -->
       <div class="bg-white p-5 rounded-xl shadow">
@@ -68,7 +69,9 @@
     </div>
 
     <!-- FOOTER -->
-    <div class="mt-8 text-center text-gray-500 text-sm">LifeOS Dashboard. 2026 copyright</div>
+    <div class="mt-8 text-center text-gray-500 text-sm">
+      LifeOS Dashboard © 2026
+    </div>
 
   </main>
 
