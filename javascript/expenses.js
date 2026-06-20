@@ -41,6 +41,7 @@ addExpenseBtn.addEventListener("click", function () {
   saveExpenses();
   renderExpenses();
   updateStats();
+  renderChart();
 
 });
 
@@ -132,6 +133,7 @@ function editExpense(id) {
   saveExpenses();
   renderExpenses();
   updateStats();
+  renderChart();
 
 }
 
@@ -142,6 +144,7 @@ function deleteExpense(id) {
   saveExpenses();
   renderExpenses();
   updateStats();
+  renderChart();
 
 }
 
@@ -173,5 +176,46 @@ function updateStats() {
 
 }
 
+let expenseChart;
+
+function renderChart() {
+
+  const categories = {};
+  
+  expenses.forEach(expense => {
+    if (!categories[expense.category]) {
+      categories[expense.category] = 0;
+    }
+
+    categories[expense.category] += expense.amount;
+  });
+
+  const labels = Object.keys(categories);
+  const data = Object.values(categories);
+
+  const ctx = document.getElementById("expenseChart");
+
+  if (!ctx) return;
+
+  if (expenseChart) {
+    expenseChart.destroy();
+  }
+
+  expenseChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: labels,
+      datasets: [{
+        label: "Amount Spent",
+        data: data
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
+}
+
 renderExpenses();
 updateStats();
+renderChart();
