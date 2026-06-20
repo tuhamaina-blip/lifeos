@@ -1,61 +1,35 @@
-const expenseList = document.getElementById("expenseList");
+let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+
 const expenseName = document.getElementById("expenseName");
 const expenseAmount = document.getElementById("expenseAmount");
 const expenseCategory = document.getElementById("expenseCategory");
 const addExpenseBtn = document.getElementById("addExpenseBtn");
 
-function saveToStorage() {
+const expenseList = document.getElementById("expenseList");
+
+const totalSpentEl = document.getElementById("totalSpent");
+const highestCategoryEl = document.getElementById("highestCategory");
+const transactionCountEl = document.getElementById("transactionCount");
+
+function saveExpenses() {
   localStorage.setItem("expenses", JSON.stringify(expenses));
 }
 
-let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-
-function renderExpenses() {
-  expenseList.innerHTML = "";
-
-  if (expenses.length === 0) {
-    expenseList.innerHTML = `<p class="text-gray-400 text-sm">No expenses yet...</p>`;
-    return;
-  }
-
-  expenses.forEach(exp => {
-    const item = document.createElement("div");
-
-    item.className = "flex justify-between items-center border-b pb-2";
-
-    item.innerHTML = `
-      <div>
-        <p class="font-semibold">${exp.name}</p>
-        <p class="text-sm text-gray-500">${exp.category}</p>
-      </div>
-
-      <div class="text-right flex items-center gap-3">
-        <p class="font-bold text-orange-500">Ksh ${exp.amount}</p>
-
-        <button 
-          class="text-red-500 text-sm hover:underline"
-          onclick="deleteExpense(${exp.id})">Delete
-        </button>
-      </div>`;
-
-    expenseList.appendChild(item);
-  });
-}
-
 addExpenseBtn.addEventListener("click", function () {
-  const name = expenseName.value;
-  const amount = expenseAmount.value;
+
+  const name = expenseName.value.trim();
+  const amount = Number(expenseAmount.value);
   const category = expenseCategory.value;
 
-  if (!name || !amount) {
-    alert("Please fill in all fields");
+  if (!name || isNaN(amount) || amount <= 0) {
+    alert("Please enter valid expense details");
     return;
   }
 
   const expense = {
     id: Date.now(),
     name,
-    amount: Number(amount),
+    amount,
     category
   };
 
@@ -64,43 +38,128 @@ addExpenseBtn.addEventListener("click", function () {
   expenseName.value = "";
   expenseAmount.value = "";
 
-  saveToStorage();
+  saveExpenses();
   renderExpenses();
-  updateTotal();
-  updateHighestCategory();
+  updateStats();
+
 });
 
-function deleteExpense(id) {
-  expenses = expenses.filter(exp => exp.id !== id);
-  saveToStorage();
-  renderExpenses();
-  updateTotal();
-  updateHighestCategory();
-}
+function renderExpenses() {
 
-function updateTotal() {
-  const total = expenses.reduce((sum, exp) => sum + exp.amount, 0);
+  expenseList.innerHTML = "";
 
-  document.getElementById("totalSpent").textContent = total;
-}
-
-function updateHighestCategory() {
   if (expenses.length === 0) {
-    document.getElementById("highestCategory").textContent = "-";
+    expenseList.innerHTML = `<p class="text-gray-400 text-sm">No expenses yet...</p>`;
     return;
   }
+
+  expenses.forEach(exp => {
+
+    const item = document.createElement("div");
+
+    item.className = "flex justify-between items-center border p-3 rounded-xl";
+
+    item.innerHTML = `
+
+      <div>
+        <p class="font-semibold">${exp.name}</p>
+        <p class="text-sm text-gray-500">${exp.category}</p>
+      </div>
+
+      <div class="flex items-center gap-4">
+
+        <p class="font-bold text-orange-500">${exp.amount}</p>
+
+        <button onclick="editExpense(${exp.id})" class="text-blue-500 hover:underline">
+          Edit
+        </button>
+
+        <button onclick="deleteExpense(${exp.id})" class="text-red-500 hover:underline">
+          Delete
+        </button>
+
+      </div>
+
+    `;
+
+    expenseList.appendChild(item);
+
+  });
+
+}
+
+// SIMPLE EDIT (same style as your Goals page)
+function editExpense(id) {
+
+  const exp = expenses.find(e => e.id === id);
+
+  const newName = prompt("Edit expense name:", exp.name);
+  if (newName === null) return;
+
+  const trimmedName = newName.trim();
+  if (!trimmedName) {
+    alert("Expense name cannot be empty");
+    return;
+  }
+
+  const newAmount = prompt("Edit amount:", exp.amount);
+  if (newAmount === null) return;
+
+  const amountNumber = Number(newAmount);
+  if (isNaN(amountNumber) || amountNumber <= 0) {
+    alert("Enter a valid amount");
+    return;
+  }
+
+  const newCategory = prompt(
+    "Edit category (Food, Transport, School, Entertainment, Other):",
+    exp.category
+  );
+
+  if (newCategory === null) return;
+
+  const validCategories = ["Food", "Transport", "School", "Entertainment", "Other"];
+
+  if (!validCategories.includes(newCategory)) {
+    alert("Invalid category");
+    return;
+  }
+
+  exp.name = trimmedName;
+  exp.amount = amountNumber;
+  exp.category = newCategory;
+
+  saveExpenses();
+  renderExpenses();
+  updateStats();
+
+}
+
+function deleteExpense(id) {
+
+  expenses = expenses.filter(exp => exp.id !== id);
+
+  saveExpenses();
+  renderExpenses();
+  updateStats();
+
+}
+
+function updateStats() {
+
+  transactionCountEl.textContent = expenses.length;
+
+  const total = expenses.reduce((sum, exp) => sum + exp.amount, 0);
+  totalSpentEl.textContent = total;
 
   const categoryTotals = {};
 
   expenses.forEach(exp => {
-    if (!categoryTotals[exp.category]) {
-      categoryTotals[exp.category] = 0;
-    }
-
-    categoryTotals[exp.category] += exp.amount;
+    categoryTotals[exp.category] =
+      (categoryTotals[exp.category] || 0) + exp.amount;
   });
 
-  let highest = "";
+  let highest = "-";
   let max = 0;
 
   for (let cat in categoryTotals) {
@@ -110,9 +169,9 @@ function updateHighestCategory() {
     }
   }
 
-  document.getElementById("highestCategory").textContent = highest;
+  highestCategoryEl.textContent = highest;
+
 }
 
 renderExpenses();
-updateTotal();
-updateHighestCategory();
+updateStats();
