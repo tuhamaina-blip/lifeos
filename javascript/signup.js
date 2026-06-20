@@ -32,10 +32,14 @@ signupBtn.addEventListener("click", function () {
     password
   };
 
-  localStorage.setItem("lifeosUser", JSON.stringify(user));
+localStorage.setItem("lifeosUser", JSON.stringify(user));
 
-  alert("Account created successfully.");
+localStorage.setItem("lifeosLoggedIn", JSON.stringify({
+  username,
+  email
+}));
 
-  window.location.href = "login.html";
+alert("Account created successfully.");
 
+window.location.href = "index.html";
 });
