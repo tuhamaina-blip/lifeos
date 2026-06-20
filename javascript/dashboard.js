@@ -35,3 +35,11 @@ if (logoutBtn) {
     window.location.href = "login.html";
   });
 }
+
+const welcomeText = document.getElementById("welcomeText");
+
+const user = JSON.parse(localStorage.getItem("lifeosLoggedIn"));
+
+if (user && welcomeText) {
+  welcomeText.textContent = `Welcome back, ${user.username}`;
+}
