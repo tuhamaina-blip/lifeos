@@ -26,3 +26,12 @@ function loadDashboard() {
 }
 
 loadDashboard();
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", function () {
+    localStorage.removeItem("lifeosLoggedIn");
+    window.location.href = "login.html";
+  });
+}
