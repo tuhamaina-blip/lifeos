@@ -9,6 +9,13 @@
 </head>
 
 <body class="bg-gray-100 text-gray-800 overflow-x-hidden">
+  <script>
+  const user = JSON.parse(localStorage.getItem("lifeosLoggedIn"));
+
+  if (!user) {
+    window.location.href = "login.html";
+  }
+</script>
 
   <!-- NAVBAR -->
   <nav class="bg-gray-900 shadow-lg">
