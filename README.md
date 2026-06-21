@@ -1,76 +1,116 @@
-# LifeOS - Personal productivity and financial dashboard
+# LifeOS
 
-LifeOS is a multi-page personal productivity web application. It helps users manage expenses, track habits, plan study tasks, and set personal goals in one unified dashboard.
-
-##  Features
-
-### Expense Tracker
-- Add and delete expenses
-- Track total spending
-- View highest spending category
-- Data persists using localStorage
-
-### Study Planner
-- Create and manage study tasks
-- Track completed and pending work
-- Organized task list system
-
-### Habit Tracker
-- Add daily habits
-- Simple progress tracking UI
-
-### Goals Tracker
-- Create personal goals
-- Visual goal management system
-
-### Dashboard
-- Central hub for all modules
-- Displays summary data
+LifeOS is a personal productivity web application that helps users manage their daily activities in one place. The application combines expense tracking, study planning, habit tracking, and goal management into a single dashboard.
 
 ---
 
-## Built With
+## Features
 
-- HTML5
-- Tailwind CSS
-- JavaScript
+### User Authentication
+
+* User registration system
+* User login system
+* Session management using localStorage
+* Protected pages
+
+### Dashboard
+
+* Personalized welcome message
+* Activity overview
+* Expense statistics
+* Task completion statistics
+* Habit completion statistics
+* Quick access navigation
+
+### Expense Tracker
+
+* Add expenses
+* Edit expenses
+* Delete expenses
+* Total spending calculation
+* Highest spending category
+* Transaction counter
+
+### Study Planner
+
+* Add study tasks
+* Mark tasks as completed
+* Edit tasks
+* Delete tasks
+
+### Habit Tracker
+
+* Add habits
+* Mark habits as completed
+* Track habit streaks
+* View completed habits
+* Edit habits
+* Delete habits
+
+### Goal Tracker
+
+* Create goals
+* Update progress percentages
+* Progress bars
+* Edit goals
+* Delete goals
+* Goal statistics
+
+---
+
+## Technologies Used
+
+* HTML5
+* Tailwind CSS
+* JavaScript
+* Local Storage
 
 ---
 
 ## Project Structure
 
-
-lifeos/
+```text
+LifeOS
 │
-├── index.html
-├── expenses.html
-├── planner.html
-├── habits.html
-├── goals.html
+├── HTML
+│   ├── expenses.html
+│   ├── goals.html
+│   ├── habits.html
+│   ├── index.html
+│   ├── login.html
+│   ├── planner.html
+│   └── signup.html
 │
-├── expenses.js
-├── planner.js (future)
-├── habits.js (future)
-├── goals.js (future)
+├── JavaScript
+│   ├── dashboard.js
+│   ├── expenses.js
+│   ├── goals.js
+│   ├── habits.js
+│   ├── login.js
+│   ├── planner.js
+│   └── signup.js
 │
 └── README.md
-
-
----
-
-##  How It Works
-
-- Each module runs independently using JavaScript
-- Data is stored in browser localStorage
-- JavaScript handles dynamic updates and UI rendering
+```
 
 ---
 
-##  Future Improvements
+## How to Run
 
-- Add backend for cloud sync
-- Add user authentication
-- Improve dashboard analytics
-- Add dark mode
+1. Clone or download the project.
+2. Open the project folder in Visual Studio Code.
+3. Install the Live Server extension.
+4. Open `login.html` or `signup.html`.
+5. Run the project using Live Server.
+6. Create an account and start using LifeOS.
 
 ---
+
+## Future Improvements
+
+* Dark mode
+* Cloud database integration
+* User profiles
+* Data export functionality
+* Additional charts and analytics
+
