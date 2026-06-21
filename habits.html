@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Goals - LifeOS</title>
+  <title>Habits - LifeOS</title>
 
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
+<body class="bg-gray-100 text-gray-800 overflow-x-hidden">
 
   <!-- Navigation Bar -->
   <nav class="bg-gray-900 shadow">
@@ -22,8 +23,8 @@
         <li><a href="index.html" class="hover:text-orange-500 transition">Dashboard</a></li>
         <li><a href="expenses.html" class="hover:text-orange-500 transition">Expenses</a></li>
         <li><a href="planner.html" class="hover:text-orange-500 transition">Study</a></li>
-        <li><a href="habits.html" class="hover:text-orange-500 transition">Habits</a></li>
-        <li><a href="goals.html" class="text-orange-500 font-semibold">Goals</a></li>
+        <li><a href="habits.html" class="text-orange-500 font-semibold">Habits</a></li>
+        <li><a href="goals.html" class="hover:text-orange-500 transition">Goals</a></li>
         <button id="logoutBtn" class="text-sm text-orange-400 hover:text-orange-300">Logout</button>
       </ul>
 
@@ -34,19 +35,19 @@
   <!-- Main Content -->
   <main class="max-w-7xl mx-auto p-4 md:p-6">
 
-    <!-- Goals Overview -->
+    <!-- Habits Overview -->
     <section class="bg-gradient-to-r from-gray-900 to-gray-800 text-white rounded-3xl p-8 shadow-lg mb-8">
 
       <p class="text-orange-400 uppercase tracking-widest text-sm mb-2">
-        Goals Tracker
+        Habit Tracker
       </p>
 
       <h2 class="text-4xl font-bold mb-3">
-        Track Your Progress
+        Build Consistency
       </h2>
 
       <p class="text-gray-300">
-        Set goals, track progress, and stay consistent every day.
+        Track your daily habits and build strong routines over time.
       </p>
 
     </section>
@@ -57,10 +58,10 @@
       <div class="bg-white rounded-2xl shadow p-6 border-t-4 border-orange-500 hover:shadow-xl transition">
 
         <p class="text-gray-500 text-sm mb-2">
-          TOTAL GOALS
+          TOTAL HABITS
         </p>
 
-        <h3 id="totalGoals" class="text-4xl font-bold">
+        <h3 id="totalHabits" class="text-4xl font-bold">
           0
         </h3>
 
@@ -69,10 +70,10 @@
       <div class="bg-white rounded-2xl shadow p-6 border-t-4 border-gray-700 hover:shadow-xl transition">
 
         <p class="text-gray-500 text-sm mb-2">
-          COMPLETED GOALS
+          COMPLETED TODAY
         </p>
 
-        <h3 id="completedGoals" class="text-4xl font-bold">
+        <h3 id="completedHabits" class="text-4xl font-bold">
           0
         </h3>
 
@@ -81,68 +82,59 @@
       <div class="bg-white rounded-2xl shadow p-6 border-t-4 border-gray-700 hover:shadow-xl transition">
 
         <p class="text-gray-500 text-sm mb-2">
-          AVERAGE PROGRESS
+          LONGEST STREAK
         </p>
 
-        <h3 id="averageProgress" class="text-4xl font-bold">
-          0%
+        <h3 id="longestStreak" class="text-4xl font-bold">
+          0
         </h3>
 
       </div>
 
     </section>
 
-    <!-- Add Goal -->
+    <!-- Add Habit -->
     <section class="bg-white rounded-3xl shadow p-6 mb-8">
 
       <h3 class="text-xl font-semibold mb-5">
-        Add Goal
+        Add Habit
       </h3>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="flex flex-col md:flex-row gap-4">
 
         <input
-          id="goalName"
+          id="habitName"
           type="text"
-          placeholder="Goal name"
-          class="border p-3 rounded-xl w-full"
-        >
-
-        <input
-          id="goalTarget"
-          type="number"
-          placeholder="Target (%)"
-          min="0"
-          max="100"
+          placeholder="Habit name"
           class="border p-3 rounded-xl w-full"
         >
 
         <button
-          id="addGoalBtn"
-          class="bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition"
+          id="addHabitBtn"
+          class="bg-orange-500 text-white rounded-xl px-6 hover:bg-orange-600 transition"
         >
-          Add Goal
+          Add Habit
         </button>
 
       </div>
 
     </section>
 
-    <!-- Goals List -->
+    <!-- Habit List -->
     <section class="bg-white rounded-3xl shadow p-6">
 
       <div class="flex justify-between items-center mb-5">
 
         <h3 class="text-2xl font-semibold">
-          Your Goals
+          Your Habits
         </h3>
 
       </div>
 
-      <div id="goalsList" class="space-y-5">
+      <div id="habitList" class="space-y-4">
 
         <p class="text-gray-400 text-sm">
-          No goals yet...
+          No habits yet...
         </p>
 
       </div>
@@ -151,11 +143,11 @@
 
     <!-- Footer -->
     <footer class="text-center text-gray-500 text-sm mt-10">
-      LifeOS Goals • 2026
+      LifeOS Habits • 2026
     </footer>
 
   </main>
-  <script src="../javascript/goals.js"></script>
+  <script src="/javascript/habits.js"></script>
 
 </body>
 </html>
